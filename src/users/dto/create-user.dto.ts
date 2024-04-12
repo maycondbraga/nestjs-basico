@@ -1,5 +1,4 @@
-import { IsNotEmpty, Length, Validate } from 'class-validator';
-import { ValidAge } from '../validator-age';
+import { IsEmail, IsNotEmpty, Length } from 'class-validator';
 import { Transform } from 'class-transformer';
 
 export class CreateUserDto {
@@ -8,7 +7,9 @@ export class CreateUserDto {
   @Transform(({ value }) => value.toLowerCase())
   name: string;
 
+  @IsEmail()
+  email: string;
+
   @IsNotEmpty()
-  @Validate(ValidAge)
-  age: number;
+  password: string;
 }
