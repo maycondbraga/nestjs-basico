@@ -21,9 +21,7 @@ export class UsersService {
   }
 
   findOne(id: number) {
-    return this.userRepository.findBy({
-      id: id,
-    });
+    return this.userRepository.findOneBy({ id: id });
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
@@ -31,6 +29,6 @@ export class UsersService {
   }
 
   remove(id: number) {
-    this.userRepository.delete({ id: id });
+    return this.userRepository.delete(id);
   }
 }
